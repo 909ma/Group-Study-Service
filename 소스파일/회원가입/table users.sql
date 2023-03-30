@@ -1,0 +1,33 @@
+/*
+회원가입 테이블 작성
+받아야 되는 정보
+
+사용자 아이디
+비밀번호
+이메일
+이름
+생년월일
+성별
+연락처1(Cell Phone)
+연락처2(H.P.)
+거주지
+관심과목
+공부시간대
+자격증
+학력
+*/
+CREATE TABLE users(
+  id VARCHAR2(20) PRIMARY KEY, -- 사용자 아이디
+  pw VARCHAR2(20) NOT NULL, -- 비밀번호
+  email VARCHAR2(50) NOT NULL UNIQUE, -- 이메일
+  name VARCHAR2(20) NOT NULL, -- 이름
+  birthday DATE NOT NULL, -- 생년월일. 이걸로 나이 계산
+  gender VARCHAR2(10) NOT NULL, -- 성별
+  phone1 VARCHAR2(20) NOT NULL, -- 전화번호1
+  phone2 VARCHAR2(20), -- 전화번호2
+  address VARCHAR2(100), -- 거주지
+  interest VARCHAR2(50), -- 관심 과목
+  hourStudy VARCHAR2(50), -- 공부 시간대
+  certificate VARCHAR2(100), -- 자격증
+  Education VARCHAR2(50) -- 학력
+);
