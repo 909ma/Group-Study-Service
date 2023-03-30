@@ -1,0 +1,76 @@
+{
+	"images": [
+		{
+			"file_name": "K-004378-005002-005094-019552_0_2_0_2_75_000_200.png",
+			"width": 976,
+			"height": 1280,
+			"imgfile": "K-004378-005002-005094-019552_0_2_0_2_75_000_200.png",
+			"drug_N": "K-019552",
+			"drug_S": "정상알약",
+			"back_color": "연회색 배경",
+			"drug_dir": "앞면",
+			"light_color": "주백색",
+			"camera_la": 75,
+			"camera_lo": 0,
+			"size": 200,
+			"dl_idx": "19551",
+			"dl_mapping_code": "K-019552",
+			"dl_name": "트루비타정 60mg/병",
+			"dl_name_en": "Truvita Tab.",
+			"img_key": "http://connectdi.com/design/img/drug/147427795990100174.jpg",
+			"dl_material": "",
+			"dl_material_en": "Zinc Sulfate Monohydrate| Ascorbic Acid Gr. 97%| Biotin 1%| Calcium Pantothenate| Cupric Oxide| Cyanocobalamin 1%| Dibasic Calcium Phosphate| Ergocalciferol Gr.| Ferrous Fumarate| Folic Acid| Magnesium Oxide| Manganese Sulfate| Molybden in Dried Yeast| Nicotinamide| Potassium Chloride| Pyridoxine Hydrochloride 97% Gr.| Retinol Acetate Gr.| Riboflavin| Selenium in Dried Yeast| Thiamine Nitrate(3倍散)| Tocopherol Acetate 50%",
+			"dl_custom_shape": "정제, 저작정",
+			"dl_company": "(주)유한양행",
+			"dl_company_en": "Yuhan",
+			"di_company_mf": "",
+			"di_company_mf_en": "",
+			"item_seq": 200607734,
+			"di_item_permit_date": "20060711",
+			"di_class_no": "[03160]혼합비타민제(비타민AD 혼합제제를 제외)",
+			"di_etc_otc_code": "일반의약품",
+			"di_edi_code": "642102470",
+			"chart": "적갈색의 타원형 필름코팅정",
+			"drug_shape": "타원형",
+			"thick": 6.16,
+			"leng_long": 18.9,
+			"leng_short": 9.85,
+			"print_front": "YH",
+			"print_back": "TV",
+			"color_class1": "갈색",
+			"color_class2": "",
+			"line_front": "",
+			"line_back": "",
+			"img_regist_ts": "20120817",
+			"form_code_name": "필름코팅정",
+			"mark_code_front_anal": "",
+			"mark_code_back_anal": "",
+			"mark_code_front_img": "",
+			"mark_code_back_img": "",
+			"mark_code_front": "",
+			"mark_code_back": "",
+			"change_date": "20190826",
+			"id": 1
+		}
+	],
+	"type": "instances",
+	"annotations": [
+		{
+			"area": 158696,
+			"iscrowd": 0,
+			"bbox": [131,128,332,478],
+			"category_id": 1,
+			"ignore": 0,
+			"segmentation": [],
+			"id": 1,
+			"image_id": 1
+		}
+	],
+	"categories": [
+		{
+			"supercategory": "pill",
+			"id": 1,
+			"name": "Drug"
+		}
+	]
+}

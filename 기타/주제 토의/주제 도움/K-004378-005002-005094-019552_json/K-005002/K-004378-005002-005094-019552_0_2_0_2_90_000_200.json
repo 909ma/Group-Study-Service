@@ -1,0 +1,76 @@
+{
+	"images": [
+		{
+			"file_name": "K-004378-005002-005094-019552_0_2_0_2_90_000_200.png",
+			"width": 976,
+			"height": 1280,
+			"imgfile": "K-004378-005002-005094-019552_0_2_0_2_90_000_200.png",
+			"drug_N": "K-005002",
+			"drug_S": "정상알약",
+			"back_color": "연회색 배경",
+			"drug_dir": "앞면",
+			"light_color": "주백색",
+			"camera_la": 90,
+			"camera_lo": 0,
+			"size": 200,
+			"dl_idx": "5001",
+			"dl_mapping_code": "K-005002",
+			"dl_name": "엘도스캡슐(에르도스테인)(수출용)",
+			"dl_name_en": "Erdos Cap.",
+			"img_key": "http://connectdi.com/design/img/drug/154609804554800049.jpg",
+			"dl_material": "에르도스테인",
+			"dl_material_en": "Erdosteine",
+			"dl_custom_shape": "경질캡슐제",
+			"dl_company": "(주)대웅제약",
+			"dl_company_en": "Daewoong Pharmaceutical",
+			"di_company_mf": "",
+			"di_company_mf_en": "",
+			"item_seq": 199500435,
+			"di_item_permit_date": "19950504",
+			"di_class_no": "[02220]진해거담제",
+			"di_etc_otc_code": "일반의약품",
+			"di_edi_code": "641601960,A04390541",
+			"chart": "내수용 - 백색의 분말이 들어있는 상부 초록색, 하부 황색의 경질캡슐제수출용 - 백색의 분말이 들어있는 상부 초록색, 하부 미황색의 경질캡슐제",
+			"drug_shape": "장방형",
+			"thick": 6.91,
+			"leng_long": 19.1,
+			"leng_short": 6.63,
+			"print_front": "DW ELC",
+			"print_back": "",
+			"color_class1": "초록",
+			"color_class2": "노랑",
+			"line_front": "",
+			"line_back": "",
+			"img_regist_ts": "20041126",
+			"form_code_name": "경질캡슐제, 산제",
+			"mark_code_front_anal": "",
+			"mark_code_back_anal": "",
+			"mark_code_front_img": "",
+			"mark_code_back_img": "",
+			"mark_code_front": "",
+			"mark_code_back": "",
+			"change_date": "20160229",
+			"id": 1
+		}
+	],
+	"type": "instances",
+	"annotations": [
+		{
+			"area": 123103,
+			"iscrowd": 0,
+			"bbox": [310,38,257,479],
+			"category_id": 1,
+			"ignore": 0,
+			"segmentation": [],
+			"id": 1,
+			"image_id": 1
+		}
+	],
+	"categories": [
+		{
+			"supercategory": "pill",
+			"id": 1,
+			"name": "Drug"
+		}
+	]
+}
