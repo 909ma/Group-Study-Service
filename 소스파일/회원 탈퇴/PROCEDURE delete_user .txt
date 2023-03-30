@@ -1,0 +1,16 @@
+CREATE OR REPLACE PROCEDURE delete_user (
+    p_id IN users.id%TYPE
+) AS
+BEGIN
+    DELETE FROM users WHERE id = p_id;
+    COMMIT;
+    DBMS_OUTPUT.PUT_LINE('User deleted successfully');
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        DBMS_OUTPUT.PUT_LINE('User not found');
+END;
+/
+--아래는 user1을 없애는 예시입니다.
+BEGIN
+    delete_user('user01');
+END;
