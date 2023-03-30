@@ -15,6 +15,7 @@
 공부시간대
 자격증
 학력
+회원 등급(ex. 학생, 선생, 대학생, 구직자 등등)
 */
 CREATE TABLE users(
   id VARCHAR2(20) PRIMARY KEY, -- 사용자 아이디
@@ -29,5 +30,6 @@ CREATE TABLE users(
   interest VARCHAR2(50), -- 관심 과목
   hourStudy VARCHAR2(50), -- 공부 시간대
   certificate VARCHAR2(100), -- 자격증
-  Education VARCHAR2(50) -- 학력
+  Education VARCHAR2(50), -- 학력
+  member_level VARCHAR2(20) NOT NULL -- 회원 등급(ex. 학생, 선생, 대학생, 구직자 등등)
 );
