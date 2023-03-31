@@ -540,6 +540,69 @@ DECLARE
 BEGIN
     add_user_log(user_id, log_time, log_type, log_message, ip_address);
 END;
+
+--석차 프로시저
+-- RANK_CODE 값을 생성하기 위한 시퀀스 생성
+CREATE SEQUENCE ranking_seq
+  START WITH 1
+  INCREMENT BY 1
+  NOCACHE
+  NOCYCLE;
+-- 시퀀스를 사용하여 RANKING 테이블에 새 행을 삽입하는 저장 프로시저 생성
+CREATE OR REPLACE PROCEDURE insert_ranking (
+  p_rank_name IN RANKING.RANK_NAME%TYPE,
+  p_rank_score IN RANKING.RANK_SCORE%TYPE
+)
+IS
+  v_rank_code VARCHAR2(20);
+BEGIN
+  
+  -- 다음 값 시퀀스에서 가져와 새 행의 RANK_CODE로 사용
+  SELECT 'R' || LPAD(ranking_seq.NEXTVAL, 3, '0')
+  INTO v_rank_code
+  FROM DUAL;
+  
+  
+  -- 새 행을 RANKING 테이블에 삽입
+  INSERT INTO RANKING (RANK_CODE, RANK_NAME, RANK_SCORE)
+  VALUES (v_rank_code, p_rank_name, p_rank_score);
+  
+  COMMIT;
+END;
+/
+
+--석차 출력 프로시저
+-- RANKING 테이블에서 모든 행을 검색하고 콘솔에 출력하는 저장 프로시저 생성
+CREATE OR REPLACE PROCEDURE print_ranking IS
+BEGIN
+ 
+  -- RANKING 테이블에서 모든 행 선택
+  FOR row IN (SELECT * FROM RANKING)
+  LOOP
+    
+    -- 값을 콘솔에 출력
+    DBMS_OUTPUT.PUT_LINE(row.RANK_CODE || ' - ' || row.RANK_NAME || ' - ' || row.RANK_SCORE);
+  END LOOP;
+END;
+/
+
+--공부시간 프로시저
+-- 네 가지 입력 매개변수를 사용하여 "insert_study_time"이라는 저장 프로시저를 생성
+CREATE OR REPLACE PROCEDURE insert_study_time(
+    P_STUDY_ID IN VARCHAR2,
+    P_SUBJECT IN VARCHAR2,
+    P_STUDY_TIME IN INT,
+    P_STUDY_DATE TIMESTAMP DEFAULT SYSDATE
+)
+--프로시저는 입력 매개변수를 사용하여 "study_time" 테이블에 
+--새 행을 삽입한 다음 트랜잭션을 커밋하여 변경 사항을 데이터베이스에 저장
+IS
+BEGIN
+    INSERT INTO study_time(STUDY_ID,SUBJECT,STUDY_TIME,STUDY_DATE)
+    VALUES(P_STUDY_ID,P_SUBJECT,P_STUDY_TIME,P_STUDY_DATE);
+     COMMIT;
+END;
+/
 --프로시저 예시-----------------------------------------------------------------------------------------------------------------------
 /*
 DECLARE
@@ -569,4 +632,20 @@ DECLARE
 BEGIN
     add_user_log(user_id, log_time, log_type, log_message, ip_address);
 END;
+
+--석차 프로시저 예시
+-- insert_ranking 프로시저를 호출하여 RANKING 테이블에 새 행 삽입
+BEGIN
+  insert_ranking('1등', 75.5);
+END;
+/
+
+--공부시간 프로시저 예시
+--프로시저는 "study_time" 테이블에 새 행을 삽입
+--'ST01', 'Math', 120 및 '2023-03-27'을 사용하여 코드에서 호출
+BEGIN
+    insert_study_time('ST01', 'Math', 120,'2023-03-27');
+END;
+
+/
 */
