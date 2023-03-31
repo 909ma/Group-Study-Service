@@ -2,7 +2,7 @@ SELECT * FROM users
 WHERE TRUNC(MONTHS_BETWEEN(SYSDATE, birthday)/12) BETWEEN 20 AND 30; --20살부터 30살까지 추려냄
 
 SELECT * FROM users
-WHERE member_level = '학생'; --회원등급이 '학생'인 회원들 추려냄
+WHERE grade = '학생'; --회원등급이 '학생'인 회원들 추려냄
 
 
 
