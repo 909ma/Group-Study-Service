@@ -14,8 +14,8 @@
 관심과목  - FK로 빼내죠
 공부시간대
 자격증
-학력
-회원 등급(ex. 학생, 선생, 대학생, 구직자 등등)
+학력 --Fk로 빼내는게 나을듯함
+회원 등급(ex. 학생, 선생, 대학생, 구직자 등등) --Fk로 빼내는게 나을듯함
 */
 CREATE TABLE users(
   id VARCHAR2(20) PRIMARY KEY, -- 사용자 아이디
@@ -30,6 +30,6 @@ CREATE TABLE users(
   interest VARCHAR2(50), -- 관심 과목
   hourStudy VARCHAR2(50), -- 공부 시간대
   certificate VARCHAR2(100), -- 자격증
-  Education VARCHAR2(50), -- 학력
+  Education_level VARCHAR2(50), -- 학력
   grade VARCHAR2(20) NOT NULL -- 회원 등급(ex. 학생, 선생, 대학생, 구직자 등등)
 );
