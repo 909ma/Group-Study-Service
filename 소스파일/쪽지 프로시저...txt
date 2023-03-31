@@ -1,0 +1,50 @@
+CREATE TABLE users(
+  id VARCHAR2(20) PRIMARY KEY, -- 사용자 아이디
+  pw VARCHAR2(20) NOT NULL, -- 비밀번호
+  email VARCHAR2(50) NOT NULL UNIQUE, -- 이메일
+  name VARCHAR2(20) NOT NULL, -- 이름, 저흰 실명제가 되버렸습니다... 닉넴 없음
+  birthday DATE NOT NULL, -- 생년월일. 이걸로 나이 계산
+  gender VARCHAR2(10) NOT NULL, -- 성별
+  phone1 VARCHAR2(20) NOT NULL, -- 전화번호1
+  phone2 VARCHAR2(20), -- 전화번호2
+  address VARCHAR2(100), -- 거주지
+  interest VARCHAR2(50), -- 관심 과목
+  hourStudy VARCHAR2(50), -- 공부 시간대
+  certificate VARCHAR2(100), -- 자격증
+  Education VARCHAR2(50), -- 학력
+  grade VARCHAR2(20) NOT NULL -- 회원 등급(ex. 학생, 선생, 대학생, 구직자 등등)
+);
+CREATE TABLE message2 (
+    message_id INT PRIMARY KEY,
+    sender_id INT,
+    receiver_id INT,
+    message_text NVARCHAR2(1000),
+	created_date DATE
+);
+CREATE OR REPLACE PROCEDURE send_message(
+    p_message_id IN INT,
+    p_sender_id IN VARCHAR2,
+    p_receiver_id IN VARCHAR2,
+    p_message_text IN NVARCHAR2,
+    p_created_date IN DATE
+)
+IS
+BEGIN
+    INSERT INTO message2(message_id, sender_id, receiver_id, message_text, created_date)
+    VALUES(p_message_id, p_sender_id, p_receiver_id, p_message_text, p_created_date);
+    COMMIT;
+    dbms_output.put_line('Message sent successfully.');
+EXCEPTION
+    WHEN OTHERS THEN
+        dbms_output.put_line('Error while sending message: ' || SQLERRM);
+        ROLLBACK;
+END;
+DECLARE
+    message_id NUMBER := 1;
+    sender_id VARCHAR2(20) := 'user1';
+    receiver_id VARCHAR2(20) := 'user2';
+    message_text NVARCHAR2(1000) := '안녕하세요. 오늘 일정이 어떻게 되나요?';
+    created_date DATE := SYSDATE;
+BEGIN
+    send_message(message_id, sender_id, receiver_id, message_text, created_date);
+END;
