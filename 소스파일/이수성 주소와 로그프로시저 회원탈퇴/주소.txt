@@ -9,6 +9,11 @@ Ri_tong varchar2(60));
 alter table address add CONSTRAINT fk_city_number
 foreign KEY(city_number) references users(id);
 
+-->
+--주소 외래키 추가(이게 맞습니다~)
+alter table users add CONSTRAINT fk_city_number
+foreign KEY(address) references address(city_number);
+
 --예시--
 INSERT INTO address (city_number, gwangcity_do, city_District, eup_myeon_dong, Ri_tong) VALUES ('22','대구광역시', '북구', '침산동', 'X');
 INSERT INTO address (city_number, gwangcity_do, city_District, eup_myeon_dong, Ri_tong) VALUES ('11', '서울특별시', '강남구', '삼성동', 'X');
