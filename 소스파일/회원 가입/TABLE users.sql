@@ -33,3 +33,10 @@ CREATE TABLE users(
   Education_level VARCHAR2(50), -- 학력
   grade VARCHAR2(20) NOT NULL -- 회원 등급(ex. 학생, 선생, 대학생, 구직자 등등)
 );
+
+
+
+ALTER TABLE users
+ADD CONSTRAINT fk_education_level
+FOREIGN KEY (Education_level)
+REFERENCES education_level (education_level_id);  --학력을 학력테이블에서 참조하게 함
