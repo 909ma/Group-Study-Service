@@ -1,5 +1,5 @@
 CREATE TABLE education_level (
-  education_level_id NUMBER(10) PRIMARY KEY, -- 학력수준 ID
+  education_level_id VARCHAR2(50) PRIMARY KEY, -- 학력수준 ID
   education_level_name VARCHAR2(50) NOT NULL -- 학력수준 이름
 );
 
