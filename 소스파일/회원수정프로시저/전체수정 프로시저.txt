@@ -1,0 +1,25 @@
+--전체 수정 프로시저
+CREATE OR REPLACE PROCEDURE insert_user(
+    p_pw IN users.pw%TYPE,    --비밀번호
+    p_email IN users.email%TYPE,    --이메일
+    p_name IN users.name%TYPE,    --이름
+    p_phone1 IN users.phone1%TYPE,    --핸드폰1
+    p_phone2 IN users.phone2%TYPE DEFAULT NULL,   --핸드폰2
+    p_address IN users.address%TYPE DEFAULT NULL,    --거주지
+    p_interest IN users.interest%TYPE DEFAULT NULL,  --관심 과목
+    p_hourStudy IN users.hourStudy%TYPE DEFAULT NULL,   --공부시간대
+    p_certificate IN users.certificate%TYPE DEFAULT NULL,    --자격증
+    p_Education_level IN users.Education_level%TYPE DEFAULT NULL,   --학력
+    p_grade IN users.grade%TYPE   --회원 등급
+) AS
+BEGIN
+    INSERT INTO users(pw, email, name, phone1, phone2, address, interest, hourStudy, certificate, Education_level, grade)
+    VALUES(p_pw, p_email, p_name, p_phone1, p_phone2, p_address, p_interest, p_hourStudy, p_certificate, p_Education_level, p_grade);
+    COMMIT;
+    DBMS_OUTPUT.PUT_LINE('User inserted successfully');
+EXCEPTION
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Error inserting user: ' || SQLERRM);
+        ROLLBACK;
+END;
+/
