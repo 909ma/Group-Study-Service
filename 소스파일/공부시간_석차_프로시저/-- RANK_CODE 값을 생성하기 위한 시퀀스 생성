@@ -1,0 +1,56 @@
+-- RANK_CODE 값을 생성하기 위한 시퀀스 생성
+CREATE SEQUENCE ranking_seq
+  START WITH 1
+  INCREMENT BY 1
+  NOCACHE
+  NOCYCLE;
+
+-- 시퀀스를 사용하여 RANKING 테이블에 새 행을 삽입하는 저장 프로시저 생성
+CREATE OR REPLACE PROCEDURE insert_ranking (
+  p_rank_name IN RANKING.RANK_NAME%TYPE,
+  p_rank_score IN RANKING.RANK_SCORE%TYPE
+)
+IS
+  v_rank_code VARCHAR2(20);
+BEGIN
+  
+  -- 다음 값 시퀀스에서 가져와 새 행의 RANK_CODE로 사용
+  SELECT 'R' || LPAD(ranking_seq.NEXTVAL, 3, '0')
+  INTO v_rank_code
+  FROM DUAL;
+  
+  
+  -- 새 행을 RANKING 테이블에 삽입
+  INSERT INTO RANKING (RANK_CODE, RANK_NAME, RANK_SCORE)
+  VALUES (v_rank_code, p_rank_name, p_rank_score);
+  
+  COMMIT;
+END;
+/
+
+-- insert_ranking 프로시저를 호출하여 RANKING 테이블에 새 행 삽입
+BEGIN
+  insert_ranking('1등', 75.5);
+END;
+/
+
+
+-- RANKING 테이블에서 모든 행을 검색하고 콘솔에 출력하는 저장 프로시저 생성
+CREATE OR REPLACE PROCEDURE print_ranking IS
+BEGIN
+ 
+  -- RANKING 테이블에서 모든 행 선택
+  FOR row IN (SELECT * FROM RANKING)
+  LOOP
+    
+    -- 값을 콘솔에 출력
+    DBMS_OUTPUT.PUT_LINE(row.RANK_CODE || ' - ' || row.RANK_NAME || ' - ' || row.RANK_SCORE);
+  END LOOP;
+END;
+/
+
+-- print_ranking 프로시저를 호출하여 RANKING 테이블에서 모든 행을 검색하고 출력
+BEGIN
+  print_ranking;
+END;
+/
