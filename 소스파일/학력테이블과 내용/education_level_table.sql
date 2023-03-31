@@ -1,6 +1,6 @@
 CREATE TABLE education_level (
-  id NUMBER(10) PRIMARY KEY, -- 학력수준 ID
-  name VARCHAR2(50) NOT NULL -- 학력수준 이름
+  education_level_id NUMBER(10) PRIMARY KEY, -- 학력수준 ID
+  education_level_name VARCHAR2(50) NOT NULL -- 학력수준 이름
 );
 
 INSERT INTO education_level (id, name) VALUES (1, '초등학교 졸업');
