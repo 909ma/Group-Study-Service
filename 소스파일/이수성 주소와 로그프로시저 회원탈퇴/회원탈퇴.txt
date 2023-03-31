@@ -7,3 +7,5 @@ create table withdraw_id(
 id VARCHAR2(20) PRIMARY KEY,--탈퇴 ID
 date varchar2(20)--탈퇴 날짜 
 );
+
+alter table withdraw_id constrin

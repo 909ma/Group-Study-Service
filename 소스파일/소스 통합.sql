@@ -10,7 +10,7 @@
 성별
 연락처1(Cell Phone)
 연락처2(H.P.)
-거주지  - FK
+거주지  - FK address
 관심과목  - FK INTEREST
 공부시간대
 자격증
@@ -23,6 +23,7 @@ users : 회원 관리 테이블
     grade : 회원 등급 관리 테이블
     INTEREST : 관심 분야 관리 테이블
     education_level : 학력 관리 테이블
+    address : 주소 관리 테이블
 STUDY_TIME : 공부 시간 관리 테이블
 RANKING : 석차 테이블
 study_cafe : 제휴 맺은 스터디 카페 관리 테이블
@@ -103,6 +104,20 @@ CREATE TABLE education_level (
   education_level_name VARCHAR2(50) NOT NULL -- 학력수준 이름
 );
 
+--주소 테이블
+create table address
+(city_number varchar2(60) PRIMARY key,
+gwangcity_do varchar2(60),
+city_District varchar2(60),
+eup_myeon_dong varchar2(60),
+Ri_tong varchar2(60));
+/*
+--회원 탈퇴 테이블
+create table withdraw_id(
+id VARCHAR2(20) PRIMARY KEY,--탈퇴 ID
+date varchar2(20)--탈퇴 날짜 
+);
+*/
 --ALTER-----------------------------------------------------------------------------------------------------------------------
 ALTER TABLE users
 ADD CONSTRAINT fk_education_level
@@ -127,6 +142,9 @@ ADD CONSTRAINT fk_users_grade
 FOREIGN KEY (grade)
 REFERENCES grade(grade_id);
 
+--주소 외래키 추가
+alter table users add CONSTRAINT fk_city_number
+foreign KEY(address) references address(city_number);
 --INSERT-----------------------------------------------------------------------------------------------------------------------
 --7개의 회원등급으로 나눔
 INSERT INTO GRADE VALUES(1, '학생');
@@ -459,6 +477,41 @@ BEGIN
 END;
 /
 
+--로그 관리자 기능
+CREATE SEQUENCE log_id_seq START WITH 1 INCREMENT BY 1;-- log id는 순차적 증가로 시퀀스를 만들어서 적용 했습니다.
+CREATE OR REPLACE PROCEDURE add_user_log(
+    P_user_id IN VARCHAR2,
+    P_log_time IN TIMESTAMP,
+    P_log_type IN VARCHAR2,
+    P_log_message IN VARCHAR2,
+    P_ip_address IN VARCHAR2
+)
+AS
+    log_id NUMBER;
+BEGIN
+    SELECT log_id_seq.NEXTVAL INTO log_id FROM dual;
+    INSERT INTO user_log (user_id, log_time, log_type, log_message, ip_address)
+    VALUES (P_user_id, P_log_time, P_log_type, P_log_message, P_ip_address);
+END;
+DECLARE
+    user_id VARCHAR2(20) := 'john.doe';
+    log_time TIMESTAMP := SYSTIMESTAMP;
+    log_type VARCHAR2(20) := 'LOGIN';
+    log_message VARCHAR2(100) := 'User logged in';
+    ip_address VARCHAR2(20) := '192.168.1.100';
+BEGIN
+    add_user_log(user_id, log_time, log_type, log_message, ip_address);
+END;
+-- 예시
+DECLARE
+    user_id VARCHAR2(20) := 'soo.doe';
+    log_time TIMESTAMP := SYSTIMESTAMP;
+    log_type VARCHAR2(20) := 'LOGIN';
+    log_message VARCHAR2(100) := 'User logged in';
+    ip_address VARCHAR2(20) := '192.168.1.100';
+BEGIN
+    add_user_log(user_id, log_time, log_type, log_message, ip_address);
+END;
 --프로시저 예시-----------------------------------------------------------------------------------------------------------------------
 /*
 DECLARE
