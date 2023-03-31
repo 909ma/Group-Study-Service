@@ -1,5 +1,5 @@
 CREATE TABLE grade (
-  grade_id NUMBER(10) PRIMARY KEY, -- 회원등급 ID
+  grade_id VARCHAR2(20) PRIMARY KEY, -- 회원등급 ID
   grade_name VARCHAR2(20) NOT NULL -- 회원등급 이름
 );
 
