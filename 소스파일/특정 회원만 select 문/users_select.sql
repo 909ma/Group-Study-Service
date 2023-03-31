@@ -14,5 +14,5 @@ SELECT * FROM users
 WHERE interest LIKE '%수학%'; --관심과목이 '수학'인 경우 추려냄
 
 SELECT * FROM users
-WHERE Education >= '대졸'; --'대졸'을 추려냄
+WHERE Education_level >= '대학교 졸업'; --'대졸'을 추려냄
 
