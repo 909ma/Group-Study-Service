@@ -20,3 +20,23 @@ BEGIN
   VALUES (p_id, p_pw, p_email, p_name, p_birthday, p_gender, p_phone1, p_phone2, p_address, p_interest, p_hourStudy, p_certificate, p_education, p_grade);
 END;
 /
+
+--아래는 입력 예시입니다
+BEGIN
+  add_user(
+    'johndoe', -- 아이디
+    '123456', -- 비밀번호
+    'johndoe@example.com', -- 이메일
+    'John Doe', -- 이름
+    TO_DATE('1980-01-01', 'YYYY-MM-DD'), -- 생년월일
+    '남성', -- 성별
+    '010-1234-5678', -- 연락처1
+    '02-123-4567', -- 연락처2
+    '서울특별시 강남구', -- 거주지
+    '영어, 프로그래밍', -- 관심 과목
+    '저녁', -- 공부 시간대
+    'TOEIC, 정보처리기사', -- 자격증
+    '학사', -- 학력
+    '일반회원' -- 회원 등급
+  );
+END;
