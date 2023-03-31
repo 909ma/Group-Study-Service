@@ -40,3 +40,26 @@ ALTER TABLE users
 ADD CONSTRAINT fk_education_level
 FOREIGN KEY (Education_level)
 REFERENCES education_level (education_level_id);  --학력을 학력테이블에서 참조하게 함
+
+
+--회원 등급 테이블 추가
+CREATE TABLE grade (
+  GRADE_CODE VARCHAR2(20) PRIMARY KEY,
+  GRADE VARCHAR2(20) NOT NULL
+);
+
+--7개의 회원등급으로 나눔
+INSERT INTO GRADE VALUES(1, '학생');
+INSERT INTO GRADE VALUES(2, '선생님');
+INSERT INTO GRADE VALUES(3, '대학생');
+INSERT INTO GRADE VALUES(4, '취준생');
+INSERT INTO GRADE VALUES(5, '직장인');
+INSERT INTO GRADE VALUES(6, '사장님');
+INSERT INTO GRADE VALUES(7, '관리자');
+
+--FK_GRADE_CODE"라는 외래 키 제약 조건을 "users" 테이블에 추가
+-- "users" 테이블의 "GRADE" 열을 "grade"의 "GRADE_CODE" 열에 연결
+ALTER TABLE USERS
+ADD CONSTRAINT FK_GRADE_CODE 
+FOREIGN KEY(GRADE)
+REFERENCES GRADE(GRADE_CODE);
