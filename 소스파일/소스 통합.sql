@@ -512,6 +512,34 @@ DECLARE
 BEGIN
     add_user_log(user_id, log_time, log_type, log_message, ip_address);
 END;
+
+
+-- 로그 프로시저
+
+CREATE SEQUENCE log_id_seq START WITH 1 INCREMENT BY 1;-- log id는 순차적 증가로 시퀀스를 만들어서 적용 했습니다.
+CREATE OR REPLACE PROCEDURE add_user_log(
+    P_user_id IN VARCHAR2,
+    P_log_time IN TIMESTAMP,
+    P_log_type IN VARCHAR2,
+    P_log_message IN VARCHAR2,
+    P_ip_address IN VARCHAR2
+)
+AS
+    log_id NUMBER;
+BEGIN
+    SELECT log_id_seq.NEXTVAL INTO log_id FROM dual;
+    INSERT INTO user_log (user_id, log_time, log_type, log_message, ip_address)
+    VALUES (P_user_id, P_log_time, P_log_type, P_log_message, P_ip_address);
+END;
+DECLARE
+    user_id VARCHAR2(20) := 'john.doe';
+    log_time TIMESTAMP := SYSTIMESTAMP;
+    log_type VARCHAR2(20) := 'LOGIN';
+    log_message VARCHAR2(100) := 'User logged in';
+    ip_address VARCHAR2(20) := '192.168.1.100';
+BEGIN
+    add_user_log(user_id, log_time, log_type, log_message, ip_address);
+END;
 --프로시저 예시-----------------------------------------------------------------------------------------------------------------------
 /*
 DECLARE
@@ -530,4 +558,15 @@ BEGIN
     delete_user('user01');
 END;
 
+
+-- 로그 프로시저 예시
+DECLARE
+    user_id VARCHAR2(20) := 'soo.doe';
+    log_time TIMESTAMP := SYSTIMESTAMP;
+    log_type VARCHAR2(20) := 'LOGIN';
+    log_message VARCHAR2(100) := 'User logged in';
+    ip_address VARCHAR2(20) := '192.168.1.100';
+BEGIN
+    add_user_log(user_id, log_time, log_type, log_message, ip_address);
+END;
 */
