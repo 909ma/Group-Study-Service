@@ -31,5 +31,5 @@ CREATE TABLE users(
   hourStudy VARCHAR2(50), -- 공부 시간대
   certificate VARCHAR2(100), -- 자격증
   Education VARCHAR2(50), -- 학력
-  member_level VARCHAR2(20) NOT NULL -- 회원 등급(ex. 학생, 선생, 대학생, 구직자 등등)
+  grade VARCHAR2(20) NOT NULL -- 회원 등급(ex. 학생, 선생, 대학생, 구직자 등등)
 );
