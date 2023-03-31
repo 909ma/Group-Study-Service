@@ -239,10 +239,225 @@ EXCEPTION
         DBMS_OUTPUT.PUT_LINE('User not found');
 END;
 /
---아래는 user1을 없애는 예시입니다.
+
+--개별 수정 프로시저------
+
+--비밀번호 업데이트 프로시저:
+create or replace PROCEDURE update_password(
+    p_id IN users.id%TYPE,
+    p_new_password IN users.pw%TYPE
+) AS
 BEGIN
-    delete_user('user01');
+    UPDATE users SET pw = p_new_password WHERE id = p_id;
+    COMMIT;
+    DBMS_OUTPUT.PUT_LINE('Password updated successfully');
+EXCEPTION
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Error updating password: ' || SQLERRM);
+        ROLLBACK;
 END;
+/
+--이름 업데이트 프로시저:
+CREATE OR REPLACE PROCEDURE update_name(
+    p_id IN users.id%TYPE,
+    p_new_name IN users.name%TYPE
+) AS
+BEGIN
+    UPDATE users SET name = p_new_name WHERE id = p_id;
+    COMMIT;
+    DBMS_OUTPUT.PUT_LINE('Name updated successfully');
+EXCEPTION
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Error updating name: ' || SQLERRM);
+        ROLLBACK;
+END;
+/
+--전화번호1 업데이트 프로시저:
+CREATE OR REPLACE PROCEDURE update_phone1(
+    p_id IN users.id%TYPE,
+    p_new_phone1 IN users.phone1%TYPE
+) AS
+BEGIN
+    UPDATE users SET phone1 = p_new_phone1 WHERE id = p_id;
+    COMMIT;
+    DBMS_OUTPUT.PUT_LINE('Phone1 updated successfully');
+EXCEPTION
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Error updating phone1: ' || SQLERRM);
+        ROLLBACK;
+END;
+/
+--전화번호2 업데이트 프로시저:
+CREATE OR REPLACE PROCEDURE update_phone2(
+    p_id IN users.id%TYPE,
+    p_new_phone2 IN users.phone2%TYPE
+) AS
+BEGIN
+    UPDATE users SET phone2 = p_new_phone2 WHERE id = p_id;
+    COMMIT;
+    DBMS_OUTPUT.PUT_LINE('Phone2 updated successfully');
+EXCEPTION
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Error updating phone2: ' || SQLERRM);
+        ROLLBACK;
+END;
+/
+--거주지 업데이트 프로시저:
+CREATE OR REPLACE PROCEDURE update_address(
+    p_id IN users.id%TYPE,
+    p_new_address IN users.address%TYPE
+) AS
+BEGIN
+    UPDATE users SET address = p_new_address WHERE id = p_id;
+    COMMIT;
+    DBMS_OUTPUT.PUT_LINE('Address updated successfully');
+EXCEPTION
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Error updating address: ' || SQLERRM);
+        ROLLBACK;
+END;
+/
+--관심 과목 업데이트 프로시저:
+CREATE OR REPLACE PROCEDURE update_interest(
+    p_id IN users.id%TYPE,
+    p_new_interest IN users.interest%TYPE
+) AS
+BEGIN
+    UPDATE users SET interest = p_new_interest WHERE id = p_id;
+    COMMIT;
+    DBMS_OUTPUT.PUT_LINE('Interest updated successfully');
+EXCEPTION
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Error updating interest: ' || SQLERRM);
+        ROLLBACK;
+END;
+/
+--공부 시간대(hourStudy) 수정 프로시저
+CREATE OR REPLACE PROCEDURE update_hourStudy(
+    p_id IN users.id%TYPE,
+    p_hourStudy IN users.hourStudy%TYPE
+) AS
+BEGIN
+    UPDATE users
+    SET hourStudy = p_hourStudy
+    WHERE id = p_id;
+    COMMIT;
+    DBMS_OUTPUT.PUT_LINE('hourStudy updated successfully');
+EXCEPTION
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Error updating hourStudy: ' || SQLERRM);
+        ROLLBACK;
+END;
+/
+--자격증(certificate) 수정 프로시저
+CREATE OR REPLACE PROCEDURE update_certificate(
+    p_id IN users.id%TYPE,
+    p_certificate IN users.certificate%TYPE
+) AS
+BEGIN
+    UPDATE users
+    SET certificate = p_certificate
+    WHERE id = p_id;
+    COMMIT;
+    DBMS_OUTPUT.PUT_LINE('certificate updated successfully');
+EXCEPTION
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Error updating certificate: ' || SQLERRM);
+        ROLLBACK;
+END;
+/
+--학력(Education_level) 수정 프로시저
+
+CREATE OR REPLACE PROCEDURE update_Education_level(
+    p_id IN users.id%TYPE,
+    p_Education_level IN users.Education_level%TYPE
+) AS
+BEGIN
+    UPDATE users
+    SET Education_level = p_Education_level
+    WHERE id = p_id;
+    COMMIT;
+    DBMS_OUTPUT.PUT_LINE('Education_level updated successfully');
+EXCEPTION
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Error updating Education_level: ' || SQLERRM);
+        ROLLBACK;
+END;
+/
+--회원 등급(grade) 수정 프로시저
+CREATE OR REPLACE PROCEDURE update_grade(
+    p_id IN users.id%TYPE,
+    p_grade IN users.grade%TYPE
+) AS
+BEGIN
+    UPDATE users
+    SET grade = p_grade
+    WHERE id = p_id;
+    COMMIT;
+    DBMS_OUTPUT.PUT_LINE('grade updated successfully');
+EXCEPTION
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Error updating grade: ' || SQLERRM);
+        ROLLBACK;
+END;
+/
+
+--전체 수정 프로시저(관리자 기능으로 추가하면 좋을 듯 합니다.)
+CREATE OR REPLACE PROCEDURE insert_user(
+    p_pw IN users.pw%TYPE,    --비밀번호
+    p_email IN users.email%TYPE,    --이메일
+    p_name IN users.name%TYPE,    --이름
+    p_phone1 IN users.phone1%TYPE,    --핸드폰1
+    p_phone2 IN users.phone2%TYPE DEFAULT NULL,   --핸드폰2
+    p_address IN users.address%TYPE DEFAULT NULL,    --거주지
+    p_interest IN users.interest%TYPE DEFAULT NULL,  --관심 과목
+    p_hourStudy IN users.hourStudy%TYPE DEFAULT NULL,   --공부시간대
+    p_certificate IN users.certificate%TYPE DEFAULT NULL,    --자격증
+    p_Education_level IN users.Education_level%TYPE DEFAULT NULL,   --학력
+    p_grade IN users.grade%TYPE   --회원 등급
+) AS
+BEGIN
+    INSERT INTO users(pw, email, name, phone1, phone2, address, interest, hourStudy, certificate, Education_level, grade)
+    VALUES(p_pw, p_email, p_name, p_phone1, p_phone2, p_address, p_interest, p_hourStudy, p_certificate, p_Education_level, p_grade);
+    COMMIT;
+    DBMS_OUTPUT.PUT_LINE('User inserted successfully');
+EXCEPTION
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Error inserting user: ' || SQLERRM);
+        ROLLBACK;
+END;
+/
+
+--전체 수정 프로시저2(관리자 기능으로 추가하면 좋을 듯 합니다.)
+CREATE OR REPLACE PROCEDURE update_user(
+    p_email IN users.email%TYPE,   --이메일
+    p_pw IN users.pw%TYPE DEFAULT NULL,   --비밀번호
+    p_name IN users.name%TYPE DEFAULT NULL,   --이름
+    p_phone1 IN users.phone1%TYPE DEFAULT NULL,   --핸드폰1
+    p_phone2 IN users.phone2%TYPE DEFAULT NULL,   --핸드폰2
+    p_address IN users.address%TYPE DEFAULT NULL,   --거주지
+    p_interest IN users.interest%TYPE DEFAULT NULL,   --관심과목
+    p_hourStudy IN users.hourStudy%TYPE DEFAULT NULL,   --공부시간대
+    p_certificate IN users.certificate%TYPE DEFAULT NULL,   --자격증
+    p_education_level IN users.education_level%TYPE DEFAULT NULL,    --학력
+    p_grade IN users.grade%TYPE DEFAULT NULL   --회원 등급
+)
+IS
+BEGIN
+    UPDATE users
+    SET pw = NVL(p_pw, pw),   --비밀번호
+        name = NVL(p_name, name),   --이름
+        phone1 = NVL(p_phone1, phone1),  --핸드폰1
+        phone2 = NVL(p_phone2, phone2),   --핸드폰2
+        address = NVL(p_address, address),   --거주지
+        interest = NVL(p_interest, interest),   --관심과목
+        hourStudy = NVL(p_hourStudy, hourStudy),   --공부시간대
+        certificate = NVL(p_certificate, certificate),   --자격증
+        education_level = NVL(p_education_level, education_level),   --학력
+        grade = NVL(p_grade, grade)   --회원등급
+    WHERE email = p_email;   --이메일
+END;
+/
 
 --프로시저 예시-----------------------------------------------------------------------------------------------------------------------
 /*
@@ -256,5 +471,10 @@ BEGIN
     send_message(message_id, sender_id, receiver_id, message_text, created_date);
 END;
 
+
+--아래는 user1을 없애는 예시입니다.
+BEGIN
+    delete_user('user01');
+END;
 
 */
