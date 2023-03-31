@@ -8,4 +8,4 @@ INSERT INTO education_level (id, name) VALUES (2, '중학교 졸업');
 INSERT INTO education_level (id, name) VALUES (3, '고등학교 졸업');
 INSERT INTO education_level (id, name) VALUES (4, '전문대학 졸업');
 INSERT INTO education_level (id, name) VALUES (5, '대학교 졸업');
-INSERT INTO education_level (id, name) VALUES (6, '대학원 졸업');
+INSERT INTO education_level (id, name) VALUES (6, '대학원 졸업 이상');
