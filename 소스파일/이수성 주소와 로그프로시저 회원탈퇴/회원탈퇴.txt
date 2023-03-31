@@ -1,0 +1,9 @@
+--유저 아이디 삭제-
+delete from users
+where id = '아이디 명';
+
+--회원 탈퇴 테이블
+create table withdraw_id(
+id VARCHAR2(20) PRIMARY KEY,--탈퇴 ID
+date varchar2(20)--탈퇴 날짜 
+);
