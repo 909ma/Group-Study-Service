@@ -1,0 +1,29 @@
+CREATE OR REPLACE PROCEDURE update_user(
+    p_email IN users.email%TYPE,   --이메일
+    p_pw IN users.pw%TYPE DEFAULT NULL,   --비밀번호
+    p_name IN users.name%TYPE DEFAULT NULL,   --이름
+    p_phone1 IN users.phone1%TYPE DEFAULT NULL,   --핸드폰1
+    p_phone2 IN users.phone2%TYPE DEFAULT NULL,   --핸드폰2
+    p_address IN users.address%TYPE DEFAULT NULL,   --거주지
+    p_interest IN users.interest%TYPE DEFAULT NULL,   --관심과목
+    p_hourStudy IN users.hourStudy%TYPE DEFAULT NULL,   --공부시간대
+    p_certificate IN users.certificate%TYPE DEFAULT NULL,   --자격증
+    p_education_level IN users.education_level%TYPE DEFAULT NULL,    --학력
+    p_grade IN users.grade%TYPE DEFAULT NULL   --회원 등급
+)
+IS
+BEGIN
+    UPDATE users
+    SET pw = NVL(p_pw, pw),   --비밀번호
+        name = NVL(p_name, name),   --이름
+        phone1 = NVL(p_phone1, phone1),  --핸드폰1
+        phone2 = NVL(p_phone2, phone2),   --핸드폰2
+        address = NVL(p_address, address),   --거주지
+        interest = NVL(p_interest, interest),   --관심과목
+        hourStudy = NVL(p_hourStudy, hourStudy),   --공부시간대
+        certificate = NVL(p_certificate, certificate),   --자격증
+        education_level = NVL(p_education_level, education_level),   --학력
+        grade = NVL(p_grade, grade)   --회원등급
+    WHERE email = p_email;   --이메일
+END;
+/
