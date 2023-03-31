@@ -11,13 +11,13 @@ CREATE OR REPLACE PROCEDURE add_user(
   p_interest IN VARCHAR2,
   p_hourStudy IN VARCHAR2,
   p_certificate IN VARCHAR2,
-  p_education IN VARCHAR2,
+  p_education_level IN VARCHAR2,
   p_grade IN VARCHAR2
 )
 IS
 BEGIN
-  INSERT INTO users(id, pw, email, name, birthday, gender, phone1, phone2, address, interest, hourStudy, certificate, education, grade)
-  VALUES (p_id, p_pw, p_email, p_name, p_birthday, p_gender, p_phone1, p_phone2, p_address, p_interest, p_hourStudy, p_certificate, p_education, p_grade);
+  INSERT INTO users(id, pw, email, name, birthday, gender, phone1, phone2, address, interest, hourStudy, certificate, education_level, grade)
+  VALUES (p_id, p_pw, p_email, p_name, p_birthday, p_gender, p_phone1, p_phone2, p_address, p_interest, p_hourStudy, p_certificate, p_education_level, p_grade);
 END;
 /
 
