@@ -1,3 +1,19 @@
+CREATE TABLE user_log (
+    log_id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,  -- 로그 id
+    user_id VARCHAR2(20) NOT NULL, -- 유저 아이디
+    log_time TIMESTAMP(6) NOT NULL, -- 로그 시간
+    log_type VARCHAR2(50) NOT NULL, -- 로그 종류(로그인, 로그 아웃, 회원탈퇴 등)
+    log_message VARCHAR2(255), -- 로그 메시지 , 유저가 어떤 행동을 한 지 기록
+    ip_address VARCHAR2(50) NOT NULL -- 로그 ip 주소.
+);
+
+INSERT INTO user_log (user_id, log_time, log_type, log_message, ip_address)
+VALUES ('john_doe', SYSDATE, 'LOGIN', 'User logged in successfully', '192.168.0.1');
+INSERT INTO user_log (user_id, log_time, log_type, log_message, ip_address)
+VALUES ('soo_doe', SYSDATE, 'sign out', 'User singed out', '192.168.0.2');
+INSERT INTO user_log (user_id, log_time, log_type, log_message, ip_address)
+VALUES ('jing_doe', SYSDATE, 'WITHDRAWAL', 'User withdrew membership', '192.168.0.3');
+
 
 CREATE SEQUENCE log_id_seq START WITH 1 INCREMENT BY 1;-- log id는 순차적 증가로 시퀀스를 만들어서 적용 했습니다.
 CREATE OR REPLACE PROCEDURE add_user_log(
