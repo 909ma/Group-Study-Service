@@ -62,12 +62,16 @@ INTEREST VARCHAR(20)
 );
 
 --공부시간 테이블추가
+CREATE SEQUENCE STUDY_TIME_SEQ START WITH 1 INCREMENT BY 1;
+
 CREATE TABLE STUDY_TIME(
-  STUDY_ID VARCHAR2(20) PRIMARY KEY,
-  SUBJECT VARCHAR2(20),
-  STUDY_TIME INT,
+  num INT DEFAULT STUDY_TIME_SEQ.NEXTVAL PRIMARY KEY,
+  ID VARCHAR2(20) NOT NULL,
+  SUBJECT VARCHAR2(20) NOT NULL,
+  STUDY_TIME INT NOT NULL,
   STUDY_DATE TIMESTAMP DEFAULT SYSDATE
 );
+
 
 --석차 테이블 추가
   --"RANK_SCORE" 열은 전체 자릿수가 3이고 배율이 2인 null이 아닌 NUMBER 열
@@ -603,19 +607,20 @@ END;
 
 --공부시간 프로시저
 -- 네 가지 입력 매개변수를 사용하여 "insert_study_time"이라는 저장 프로시저를 생성
-CREATE OR REPLACE PROCEDURE insert_study_time(
+CREATE SEQUENCE STUDY_TIME_SEQ START WITH 1 INCREMENT BY 1;
+
+CREATE OR REPLACE PROCEDURE insert_study_time (
     P_STUDY_ID IN VARCHAR2,
     P_SUBJECT IN VARCHAR2,
     P_STUDY_TIME IN INT,
-    P_STUDY_DATE TIMESTAMP DEFAULT SYSDATE
+    P_STUDY_DATE IN DATE
 )
---프로시저는 입력 매개변수를 사용하여 "study_time" 테이블에 
---새 행을 삽입한 다음 트랜잭션을 커밋하여 변경 사항을 데이터베이스에 저장
 IS
 BEGIN
-    INSERT INTO study_time(STUDY_ID,SUBJECT,STUDY_TIME,STUDY_DATE)
-    VALUES(P_STUDY_ID,P_SUBJECT,P_STUDY_TIME,P_STUDY_DATE);
-     COMMIT;
+    INSERT INTO study_time(num, ID, SUBJECT, STUDY_TIME, STUDY_DATE)
+    VALUES(study_time_seq.NEXTVAL, P_STUDY_ID, P_SUBJECT, P_STUDY_TIME, P_STUDY_DATE);
+    COMMIT;
+    DBMS_OUTPUT.PUT_LINE('Study time record inserted successfully.');
 END;
 /
 --프로시저 예시-----------------------------------------------------------------------------------------------------------------------
