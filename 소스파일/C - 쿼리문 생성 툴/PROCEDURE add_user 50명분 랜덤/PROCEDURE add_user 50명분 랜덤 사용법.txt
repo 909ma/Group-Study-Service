@@ -1,0 +1,35 @@
+그냥 실행시키면 안에 저장된 50명분에 대해서 PROCEDURE add_user에 맞춰서 생성해줍니다.
+생성된 쿼리문은 output.sql 파일을 참조하세요.
+
+##################################################################################
+for(int i=0; i<50; i++) {
+    	fprintf(fp,"BEGIN\n");
+    	fprintf(fp,"add_user(\n");
+        fprintf(fp, "'%s',\n", strings[i]);//아이디  
+    	fprintf(fp,"'password%d',\n",i+1);
+    	fprintf(fp,"'test%d@test.com',\n",i+1);//이메일
+    	fprintf(fp,"'%s',\n",names[i]);//이름 
+    	
+    	year = rand() % (end_year - start_year + 1) + start_year;  // 랜덤으로 년도 생성
+    	month = rand() % 12 + 1;  // 랜덤으로 월 생성
+    	day = rand() % 31 + 1;  // 랜덤으로 일 생성
+    	fprintf(fp,"TO_DATE('%d-%d-%d','YYYY-MM-DD'),\n",year,month,day);//생년월일 
+    	
+    	fprintf(fp,"'%s',\n",sex[i%2]);//성별 
+    	first_part = rand() % 10000;  // 0부터 9999 사이의 랜덤 정수 생성
+    	second_part = rand() % 10000;  // 0부터 9999 사이의 랜덤 정수 생성
+    	fprintf(fp,"'010-%04d-%04d',\n",first_part,second_part);//연락처 1
+    	
+    	first_part = rand() % 1000;  // 0부터 999 사이의 랜덤 정수 생성
+    	second_part = rand() % 10000;  // 0부터 9999 사이의 랜덤 정수 생성
+    	fprintf(fp,"'02-%03d-%04d',\n",first_part,second_part);//연락처2 
+    	
+    	fprintf(fp,"NULL,\n");//거주지 
+    	fprintf(fp,"NULL,\n");//관심과목 
+    	fprintf(fp,"NULL,\n");//공부시간대 
+    	fprintf(fp,"NULL,\n");//자격증 
+    	fprintf(fp,"NULL,\n");//학력 
+    	fprintf(fp,"'1'\n");//회원등급 
+    	fprintf(fp,");\n");
+    	fprintf(fp,"END;\n/\n");
+    }

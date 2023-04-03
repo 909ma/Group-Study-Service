@@ -1,0 +1,11 @@
+요구사항 정의서
+https://docs.google.com/spreadsheets/d/1xIPzxpt_-j7CpuInjiSNqDuKOi0lXbRcNLFUWteBm2o/edit?usp=sharing
+
+CRUD 매트릭스
+https://docs.google.com/spreadsheets/d/1uZ5sq8gpUnG17gU9XXXOd56cIqEXnlfGW1pYFnPePKg/edit?usp=sharing
+
+Gantt Chart
+https://docs.google.com/spreadsheets/d/1d6tSly-z1XVzUOTYutw0uYR8rsCtx0gpZRHPa4EBcng/edit?usp=sharing
+
+프로젝트 일정 계획표
+https://docs.google.com/spreadsheets/d/1nWh-XY20TcWPoQl7lEubVzFY8FJWGg902SyhYgYn5xY/edit?usp=sharing
