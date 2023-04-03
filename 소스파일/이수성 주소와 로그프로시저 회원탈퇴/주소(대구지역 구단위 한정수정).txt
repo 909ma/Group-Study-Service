@@ -1,7 +1,8 @@
 create table address
 (city_number varchar2(60) PRIMARY key,
 gwangcity_do varchar2(60),
-city_District varchar2(60),
+city_District varchar2(60)
+);
 
 
 --외래키 추가
@@ -14,11 +15,11 @@ alter table users add CONSTRAINT fk_city_number
 foreign KEY(address) references address(city_number);
 
 --예시--
-INSERT INTO address (city_number, gwangcity_do, city_District, eup_myeon_dong, Ri_tong) VALUES ('1','대구광역시', '중구');
-INSERT INTO address (city_number, gwangcity_do, city_District, eup_myeon_dong, Ri_tong) VALUES ('2', '대구광역시', '동구');
-INSERT INTO address (city_number, gwangcity_do, city_District, eup_myeon_dong, Ri_tong) VALUES ('3', '대구광역시', '서구');
-INSERT INTO address (city_number, gwangcity_do, city_District, eup_myeon_dong, Ri_tong) VALUES ('4', '대구광역시', '남구');
-INSERT INTO address (city_number, gwangcity_do, city_District, eup_myeon_dong, Ri_tong) VALUES ('5', '대구광역시', '북구');
-INSERT INTO address (city_number, gwangcity_do, city_District, eup_myeon_dong, Ri_tong) VALUES ('6', '대구광역시', '수성구');
-INSERT INTO address (city_number, gwangcity_do, city_District, eup_myeon_dong, Ri_tong) VALUES ('7', '대구광역시', '달서구');
-INSERT INTO address (city_number, gwangcity_do, city_District, eup_myeon_dong, Ri_tong) VALUES ('8', '대구광역시', '달성군');
+INSERT INTO address (city_number, gwangcity_do, city_District, eup_myeon_dong, Ri_tong) VALUES ('0','대구광역시', '중구');
+INSERT INTO address (city_number, gwangcity_do, city_District, eup_myeon_dong, Ri_tong) VALUES ('1', '대구광역시', '동구');
+INSERT INTO address (city_number, gwangcity_do, city_District, eup_myeon_dong, Ri_tong) VALUES ('2', '대구광역시', '서구');
+INSERT INTO address (city_number, gwangcity_do, city_District, eup_myeon_dong, Ri_tong) VALUES ('3', '대구광역시', '남구');
+INSERT INTO address (city_number, gwangcity_do, city_District, eup_myeon_dong, Ri_tong) VALUES ('4', '대구광역시', '북구');
+INSERT INTO address (city_number, gwangcity_do, city_District, eup_myeon_dong, Ri_tong) VALUES ('5', '대구광역시', '수성구');
+INSERT INTO address (city_number, gwangcity_do, city_District, eup_myeon_dong, Ri_tong) VALUES ('6', '대구광역시', '달서구');
+INSERT INTO address (city_number, gwangcity_do, city_District, eup_myeon_dong, Ri_tong) VALUES ('7', '대구광역시', '달성군');
