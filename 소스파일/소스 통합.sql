@@ -127,6 +127,13 @@ CREATE TABLE user_log (
     log_message VARCHAR2(255), -- 로그 메시지 , 유저가 어떤 행동을 한 지 기록
     ip_address VARCHAR2(50) NOT NULL -- 로그 ip 주소.
 );
+
+--hour study 테이블 추가
+CREATE TABLE HOUR_STUDY(
+CODE VARCHAR(50) PRIMARY KEY,
+DAYS VARCHAR(20) NOT NULL,
+HOURS VARCHAR(20) NOT NULL
+);
 --ALTER-----------------------------------------------------------------------------------------------------------------------
 ALTER TABLE users
 ADD CONSTRAINT fk_education_level
@@ -154,6 +161,12 @@ REFERENCES grade(grade_id);
 --주소 외래키 추가
 alter table users add CONSTRAINT fk_city_number
 foreign KEY(address) references address(city_number);
+
+--외래키 추가
+ALTER TABLE USERS
+ADD CONSTRAINT FK_HOUR_STUDY_CODE
+FOREIGN KEY(HOURSTUDY)
+REFERENCES HOUR_STUDY(CODE);
 --INSERT-----------------------------------------------------------------------------------------------------------------------
 --7개의 회원등급으로 나눔
 INSERT INTO GRADE VALUES(1, '학생');
@@ -198,6 +211,17 @@ INSERT INTO education_level (id, name) VALUES (1, '고등학교 졸업');
 INSERT INTO education_level (id, name) VALUES (2, '전문대학 졸업');
 INSERT INTO education_level (id, name) VALUES (3, '대학교 졸업');
 INSERT INTO education_level (id, name) VALUES (4, '대학원 졸업 이상');
+
+INSERT INTO HOUR_STUDY VALUES ('case1','평일','주간');
+INSERT INTO HOUR_STUDY VALUES ('case2','평일','야간');
+INSERT INTO HOUR_STUDY VALUES ('case3','평일','종일');
+INSERT INTO HOUR_STUDY VALUES ('case4','주말','주간');
+INSERT INTO HOUR_STUDY VALUES ('case5','주말','야간');
+INSERT INTO HOUR_STUDY VALUES ('case6','주말','종일');
+INSERT INTO HOUR_STUDY VALUES ('case7','매일','주간');
+INSERT INTO HOUR_STUDY VALUES ('case8','매일','야간');
+INSERT INTO HOUR_STUDY VALUES ('case9','매일','종일');
+
 --SELECT-----------------------------------------------------------------------------------------------------------------------
 SELECT * FROM users
 WHERE TRUNC(MONTHS_BETWEEN(SYSDATE, birthday)/12) BETWEEN 20 AND 30; --20살부터 30살까지 추려냄
@@ -529,6 +553,7 @@ BEGIN
     INSERT INTO user_log (user_id, log_time, log_type, log_message, ip_address)
     VALUES (P_user_id, P_log_time, P_log_type, P_log_message, P_ip_address);
 END;
+/
 /
 --석차 프로시저
 -- RANK_CODE 값을 생성하기 위한 시퀀스 생성
