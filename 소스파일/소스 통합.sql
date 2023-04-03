@@ -12,7 +12,7 @@
 연락처2(H.P.)
 거주지  - FK address
 관심과목  - FK INTEREST
-공부시간대
+공부시간대 - fk hour_study
 자격증
 학력 --Fk education_level
 회원 등급(ex. 학생, 선생, 대학생, 구직자 등등) --Fk grade
@@ -24,6 +24,7 @@ users : 회원 관리 테이블
     INTEREST : 관심 분야 관리 테이블
     education_level : 학력 관리 테이블
     address : 주소 관리 테이블
+    hour_study : 선호 공부 시간 테이블
 STUDY_TIME : 공부 시간 관리 테이블
 RANKING : 석차 테이블
 study_cafe : 제휴 맺은 스터디 카페 관리 테이블
