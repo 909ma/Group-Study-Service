@@ -176,12 +176,11 @@ INSERT INTO study_cafe (cafe_id, cafe_name, address, phone, open_time, close_tim
 VALUES ('SC0004', '건대 스터디카페', '서울특별시 광진구 능동로 123', '02-456-7890', '11:00', '02:00', '스탠드, 노트북 대여, 무료음료, 야간 영업', 70, 25, '무선인터넷', '흡연 가능', '베이직 멤버십', 15000);*/
 --임시 자료도 있긴 한데 거주지는 FK로 불러오는게 맞을듯? 거주지테이블을 단순화해서 좀 쉽게 갑시다
 
-INSERT INTO education_level (id, name) VALUES (1, '초등학교 졸업');
-INSERT INTO education_level (id, name) VALUES (2, '중학교 졸업');
-INSERT INTO education_level (id, name) VALUES (3, '고등학교 졸업');
-INSERT INTO education_level (id, name) VALUES (4, '전문대학 졸업');
-INSERT INTO education_level (id, name) VALUES (5, '대학교 졸업');
-INSERT INTO education_level (id, name) VALUES (6, '대학원 졸업 이상');
+INSERT INTO education_level (id, name) VALUES (1, '중학교 졸업');
+INSERT INTO education_level (id, name) VALUES (2, '고등학교 졸업');
+INSERT INTO education_level (id, name) VALUES (3, '전문대학 졸업');
+INSERT INTO education_level (id, name) VALUES (4, '대학교 졸업');
+INSERT INTO education_level (id, name) VALUES (5, '대학원 졸업 이상');
 --SELECT-----------------------------------------------------------------------------------------------------------------------
 SELECT * FROM users
 WHERE TRUNC(MONTHS_BETWEEN(SYSDATE, birthday)/12) BETWEEN 20 AND 30; --20살부터 30살까지 추려냄
