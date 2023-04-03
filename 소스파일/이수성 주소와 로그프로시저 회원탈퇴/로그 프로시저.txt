@@ -1,3 +1,4 @@
+--테이블---
 CREATE TABLE user_log (
     log_id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,  -- 로그 id
     user_id VARCHAR2(20) NOT NULL, -- 유저 아이디
@@ -6,7 +7,7 @@ CREATE TABLE user_log (
     log_message VARCHAR2(255), -- 로그 메시지 , 유저가 어떤 행동을 한 지 기록
     ip_address VARCHAR2(50) NOT NULL -- 로그 ip 주소.
 );
-
+--테이블 예시--
 INSERT INTO user_log (user_id, log_time, log_type, log_message, ip_address)
 VALUES ('john_doe', SYSDATE, 'LOGIN', 'User logged in successfully', '192.168.0.1');
 INSERT INTO user_log (user_id, log_time, log_type, log_message, ip_address)
