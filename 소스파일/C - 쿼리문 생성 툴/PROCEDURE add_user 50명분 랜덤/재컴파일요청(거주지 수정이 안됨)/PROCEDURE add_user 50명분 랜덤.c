@@ -90,6 +90,8 @@ END;
     int day = rand() % 31 + 1;  // 랜덤으로 일 생성
     int first_part;
     int second_part;
+    int city_number;
+    int education_level_id;
     //printf("%d년 %d월 %d일\n", year, month, day);
     
     FILE *fp = fopen("output.sql", "w");
@@ -119,12 +121,17 @@ END;
     	second_part = rand() % 10000;  // 0부터 9999 사이의 랜덤 정수 생성
     	fprintf(fp,"'02-%03d-%04d',\n",first_part,second_part);//연락처2 
     	
-    	fprintf(fp,"NULL,\n");//거주지 
+		city_number = rand() % 8; // 0부터 7 사이의 무작위 정수 생성
+    	fprintf(fp,"'%d',\n",location); //거주지 
+    	
     	fprintf(fp,"NULL,\n");//관심과목 
     	fprintf(fp,"NULL,\n");//공부시간대 
     	fprintf(fp,"NULL,\n");//자격증 
-    	fprintf(fp,"NULL,\n");//학력 
-    	fprintf(fp,"'2'\n");//회원등급 
+    	
+    	education_level_id = rand() % 5; // 0부터 4 사이의 무작위 정수 생성
+    	fprintf(fp,"'%d',\n");//학력 
+    	
+    	fprintf(fp,"'1'\n");//회원등급 
     	fprintf(fp,");\n");
     	fprintf(fp,"END;\n/\n");
     }
