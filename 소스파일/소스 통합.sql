@@ -175,6 +175,14 @@ VALUES ('SC0003', '홍대 스터디카페', '서울특별시 마포구 와우산로 123', '02-345-6
 INSERT INTO study_cafe (cafe_id, cafe_name, address, phone, open_time, close_time, facilities, seats, outlets, wifi, smoking_area, membership, membership_fee)
 VALUES ('SC0004', '건대 스터디카페', '서울특별시 광진구 능동로 123', '02-456-7890', '11:00', '02:00', '스탠드, 노트북 대여, 무료음료, 야간 영업', 70, 25, '무선인터넷', '흡연 가능', '베이직 멤버십', 15000);*/
 --임시 자료도 있긴 한데 거주지는 FK로 불러오는게 맞을듯? 거주지테이블을 단순화해서 좀 쉽게 갑시다
+INSERT INTO address (city_number, gwangcity_do, city_District) VALUES ('0','대구광역시', '중구');
+INSERT INTO address (city_number, gwangcity_do, city_District) VALUES ('1', '대구광역시', '동구');
+INSERT INTO address (city_number, gwangcity_do, city_District) VALUES ('2', '대구광역시', '서구');
+INSERT INTO address (city_number, gwangcity_do, city_District) VALUES ('3', '대구광역시', '남구');
+INSERT INTO address (city_number, gwangcity_do, city_District) VALUES ('4', '대구광역시', '북구');
+INSERT INTO address (city_number, gwangcity_do, city_District) VALUES ('5', '대구광역시', '수성구');
+INSERT INTO address (city_number, gwangcity_do, city_District) VALUES ('6', '대구광역시', '달서구');
+INSERT INTO address (city_number, gwangcity_do, city_District) VALUES ('7', '대구광역시', '달성군');
 
 INSERT INTO education_level (id, name) VALUES (0, '중학교 졸업');
 INSERT INTO education_level (id, name) VALUES (1, '고등학교 졸업');
