@@ -129,7 +129,7 @@ END;
     	fprintf(fp,"NULL,\n");//자격증 
     	
     	education_level_id = rand() % 5; // 0부터 4 사이의 무작위 정수 생성
-    	fprintf(fp,"'%d',\n");//학력 
+    	fprintf(fp,"'%d',\n",education_level_id);//학력 
     	
     	fprintf(fp,"'1'\n");//회원등급 
     	fprintf(fp,");\n");
