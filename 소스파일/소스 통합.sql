@@ -28,6 +28,7 @@ STUDY_TIME : 공부 시간 관리 테이블
 RANKING : 석차 테이블
 study_cafe : 제휴 맺은 스터디 카페 관리 테이블
 message2 : 쪽지 관리 테이블
+user_log : 유저 관리 테이블
 */
 --CREATE-----------------------------------------------------------------------------------------------------------------------
 CREATE TABLE users(
@@ -118,6 +119,14 @@ id VARCHAR2(20) PRIMARY KEY,--탈퇴 ID
 date varchar2(20)--탈퇴 날짜 
 );
 */
+CREATE TABLE user_log (
+    log_id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,  -- 로그 id
+    user_id VARCHAR2(20) NOT NULL, -- 유저 아이디
+    log_time TIMESTAMP(6) NOT NULL, -- 로그 시간
+    log_type VARCHAR2(50) NOT NULL, -- 로그 종류(로그인, 로그 아웃, 회원탈퇴 등)
+    log_message VARCHAR2(255), -- 로그 메시지 , 유저가 어떤 행동을 한 지 기록
+    ip_address VARCHAR2(50) NOT NULL -- 로그 ip 주소.
+);
 --ALTER-----------------------------------------------------------------------------------------------------------------------
 ALTER TABLE users
 ADD CONSTRAINT fk_education_level
@@ -250,7 +259,7 @@ EXCEPTION
         dbms_output.put_line('Error while sending message: ' || SQLERRM);
         ROLLBACK;
 END;
-
+/
 --회원 탈퇴
 CREATE OR REPLACE PROCEDURE delete_user (
     p_id IN users.id%TYPE
@@ -500,25 +509,7 @@ BEGIN
     INSERT INTO user_log (user_id, log_time, log_type, log_message, ip_address)
     VALUES (P_user_id, P_log_time, P_log_type, P_log_message, P_ip_address);
 END;
-DECLARE
-    user_id VARCHAR2(20) := 'john.doe';
-    log_time TIMESTAMP := SYSTIMESTAMP;
-    log_type VARCHAR2(20) := 'LOGIN';
-    log_message VARCHAR2(100) := 'User logged in';
-    ip_address VARCHAR2(20) := '192.168.1.100';
-BEGIN
-    add_user_log(user_id, log_time, log_type, log_message, ip_address);
-END;
--- 예시
-DECLARE
-    user_id VARCHAR2(20) := 'soo.doe';
-    log_time TIMESTAMP := SYSTIMESTAMP;
-    log_type VARCHAR2(20) := 'LOGIN';
-    log_message VARCHAR2(100) := 'User logged in';
-    ip_address VARCHAR2(20) := '192.168.1.100';
-BEGIN
-    add_user_log(user_id, log_time, log_type, log_message, ip_address);
-END;
+/
 
 
 -- 로그 프로시저
@@ -538,16 +529,7 @@ BEGIN
     INSERT INTO user_log (user_id, log_time, log_type, log_message, ip_address)
     VALUES (P_user_id, P_log_time, P_log_type, P_log_message, P_ip_address);
 END;
-DECLARE
-    user_id VARCHAR2(20) := 'john.doe';
-    log_time TIMESTAMP := SYSTIMESTAMP;
-    log_type VARCHAR2(20) := 'LOGIN';
-    log_message VARCHAR2(100) := 'User logged in';
-    ip_address VARCHAR2(20) := '192.168.1.100';
-BEGIN
-    add_user_log(user_id, log_time, log_type, log_message, ip_address);
-END;
-
+/
 --석차 프로시저
 -- RANK_CODE 값을 생성하기 위한 시퀀스 생성
 CREATE SEQUENCE ranking_seq
@@ -654,5 +636,26 @@ BEGIN
     insert_study_time('ST01', 'Math', 120,'2023-03-27');
 END;
 
+--유저 로그 프로시저 사용 예시
+DECLARE
+    user_id VARCHAR2(20) := 'john.doe';
+    log_time TIMESTAMP := SYSTIMESTAMP;
+    log_type VARCHAR2(20) := 'LOGIN';
+    log_message VARCHAR2(100) := 'User logged in';
+    ip_address VARCHAR2(20) := '192.168.1.100';
+BEGIN
+    add_user_log(user_id, log_time, log_type, log_message, ip_address);
+END;
+/
+-- 예시
+DECLARE
+    user_id VARCHAR2(20) := 'soo.doe';
+    log_time TIMESTAMP := SYSTIMESTAMP;
+    log_type VARCHAR2(20) := 'LOGIN';
+    log_message VARCHAR2(100) := 'User logged in';
+    ip_address VARCHAR2(20) := '192.168.1.100';
+BEGIN
+    add_user_log(user_id, log_time, log_type, log_message, ip_address);
+END;
 /
 */
