@@ -211,11 +211,11 @@ INSERT INTO address (city_number, gwangcity_do, city_District) VALUES ('5', '대�
 INSERT INTO address (city_number, gwangcity_do, city_District) VALUES ('6', '대구광역시', '달서구');
 INSERT INTO address (city_number, gwangcity_do, city_District) VALUES ('7', '대구광역시', '달성군');
 
-INSERT INTO education_level (id, name) VALUES (0, '중학교 졸업');
-INSERT INTO education_level (id, name) VALUES (1, '고등학교 졸업');
-INSERT INTO education_level (id, name) VALUES (2, '전문대학 졸업');
-INSERT INTO education_level (id, name) VALUES (3, '대학교 졸업');
-INSERT INTO education_level (id, name) VALUES (4, '대학원 졸업 이상');
+INSERT INTO education_level (education_level_id, education_level_name) VALUES (0, '중학교 졸업');
+INSERT INTO education_level (education_level_id, education_level_name) VALUES (1, '고등학교 졸업');
+INSERT INTO education_level (education_level_id, education_level_name) VALUES (2, '전문대학 졸업');
+INSERT INTO education_level (education_level_id, education_level_name) VALUES (3, '대학교 졸업');
+INSERT INTO education_level (education_level_id, education_level_name) VALUES (4, '대학원 졸업 이상');
 
 INSERT INTO HOUR_STUDY VALUES ('case1','평일','주간');
 INSERT INTO HOUR_STUDY VALUES ('case2','평일','야간');
