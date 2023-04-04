@@ -1,0 +1,65 @@
+--1단계 SELECT
+select * from study_time;
+
+--2단계 JOIN
+SELECT users.name AS 이름, study_time.subject AS 과목, study_time.study_time AS 시간
+FROM study_time
+JOIN users
+ON study_time.id = users.id;
+
+--3단계 VIEW
+CREATE VIEW ssstudy AS SELECT users.name AS 이름, study_time.subject AS 과목, study_time.study_time AS 시간
+FROM study_time
+JOIN users
+ON study_time.id = users.id;
+
+SELECT * FROM ssstudy;
+
+--4단계 ORDER BY
+SELECT * FROM ssstudy
+ORDER BY 이름;
+
+--5단계 GROUP BY
+SELECT 이름, 과목, SUM(시간) AS "총합 시간" FROM ssstudy
+GROUP BY 이름, 과목
+ORDER BY "총합 시간";
+
+--6단계 WHERE
+SELECT 이름, 과목, SUM(시간) AS "총합 시간" FROM ssstudy
+WHERE 이름 = 'Logan'
+GROUP BY 이름, 과목
+ORDER BY "총합 시간";
+--------------------------------------------------------------------
+--7단계 HAVING
+SELECT 이름, 과목, SUM(시간) AS "총합 시간" FROM ssstudy
+WHERE 과목 = '국어'
+GROUP BY 이름, 과목
+HAVING SUM(시간) > 150
+ORDER BY "총합 시간";
+
+--8단계 이중 질의문
+SELECT 이름, 과목, SUM(시간) AS "총합 시간" FROM ssstudy
+WHERE 과목 = '수학'
+GROUP BY 이름, 과목;
+
+--  가장 공부 많이 한 시간 찾기
+SELECT MAX("총합 시간")
+FROM
+(
+SELECT 이름, 과목, SUM(시간) AS "총합 시간" FROM ssstudy
+WHERE 과목 = '수학'
+GROUP BY 이름, 과목);
+
+--  가장 공부 많이 한 학생 찾기
+SELECT 이름, 과목, SUM(시간) AS "총합 시간" FROM ssstudy
+WHERE 과목 = '수학'
+GROUP BY 이름, 과목
+HAVING SUM(시간) = (
+    SELECT MIN("총합 시간")
+    FROM
+    (
+    SELECT 이름, 과목, SUM(시간) AS "총합 시간" FROM ssstudy
+    WHERE 과목 = '수학'
+    GROUP BY 이름, 과목
+    )
+);
