@@ -80,7 +80,7 @@ END;
     	fprintf(fp,"update_grade(\n");
         fprintf(fp, "'%s',\n", strings[i]);//¾ÆÀÌµð  
         
-        grade = rand() % 7 + 1;
+        grade = rand() % 6 + 1;
     	fprintf(fp,"'%d'\n",grade);
     	fprintf(fp,");\n");
     	fprintf(fp,"END;\n/\n");
