@@ -1,0 +1,18 @@
+--users 테이블 실습
+--1단계 SELECT
+SELECT * 
+FROM users;
+
+--2단계 JOIN
+SELECT id, name, address.city_district
+FROM users
+JOIN address
+ON users.address = address.city_number;
+
+--3단계 이중 JOIN
+SELECT id, name, address.city_district, interest.interest
+FROM users
+JOIN address
+ON users.address = address.city_number
+JOIN interest
+ON users.interest = interest.interest_code;
