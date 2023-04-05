@@ -1,0 +1,11 @@
+SELECT u., a.city_District, g.GRADE: SELECT 문에서는 조회할 컬럼을 지정합니다. u., a.city_District, g.GRADE는 users 테이블, address 테이블, grade 테이블의 모든 컬럼을 조회합니다.
+
+FROM users u JOIN address a ON u.address = a.city_number JOIN grade g ON u.grade = g.GRADE_CODE: FROM 문에서는 조회할 데이터가 있는 테이블 또는 조인된 테이블을 지정합니다. 여기서는 users 테이블과 address 테이블, grade 테이블을 조인하여 사용하고 있습니다. JOIN은 조인하는 방법을 지정하는 키워드입니다. ON은 조인할 조건을 지정합니다. 즉, u.address = a.city_number는 users 테이블의 address 컬럼과 address 테이블의 city_number 컬럼을 조인 조건으로 사용하고, u.grade = g.GRADE_CODE는 users 테이블의 grade 컬럼과 grade 테이블의 GRADE_CODE 컬럼을 조인 조건으로 사용합니다.
+
+u., a.city_District, g.GRADE: SELECT 문에서 u., a.city_District, g.GRADE는 앞서 FROM 문에서 조인된 테이블들의 컬럼들을 모두 조회하기 위한 것입니다. u.*, a.city_District, g.GRADE는 각각 users, address, grade 테이블에서 컬럼을 지정하는 것입니다.
+
+JOIN: 테이블을 조인하는 SQL 키워드입니다. 여기서는 INNER JOIN을 사용하여 users, address, grade 테이블을 조인합니다.
+
+ON: JOIN과 함께 사용하여 테이블 조인 시 조건을 지정합니다.
+
+users u, address a, grade g: 각 테이블에 대한 별칭(alias)입니다. 테이블명이 길거나 복잡한 경우, 테이블의 별칭을 지정하여 SQL 문장을 간결하게 작성할 수 있습니다.
