@@ -290,11 +290,17 @@ EXCEPTION
 END;
 /
 --회원 탈퇴
-CREATE OR REPLACE PROCEDURE delete_user (
+create or replace PROCEDURE delete_user (
     p_id IN users.id%TYPE
 ) AS
 BEGIN
     DELETE FROM users WHERE id = p_id;
+    DELETE FROM study_time WHERE id = p_id;
+    DELETE FROM ranking WHERE rank_name = p_id;
+    DELETE FROM study_cafe WHERE study_cafe_name = p_id;
+    DELETE FROM message2 WHERE receiver_id = p_id;
+    UPDATE messege2 SET sender_id = '탈퇴' WHERE sender_id = p_id;
+    INSERT INTO user_log (USER_ID, LOG_MESSAGE) VALUES (p_id, '탈퇴');
     COMMIT;
     DBMS_OUTPUT.PUT_LINE('User deleted successfully');
 EXCEPTION
