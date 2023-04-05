@@ -18,7 +18,7 @@ JOIN interest
 ON users.interest = interest.interest_code;
 
 --다섯 테이블 연합
-SELECT id, name, address.city_district, interest.interest, education_level.education_level_name, grade.grade
+SELECT id AS 아이디, name AS 이름, address.city_district AS 주소, interest.interest AS 흥미, education_level.education_level_name AS 학력, grade.grade AS 등급
 FROM users
 JOIN address
 ON users.address = address.city_number

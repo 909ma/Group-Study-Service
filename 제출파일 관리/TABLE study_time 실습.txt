@@ -63,7 +63,7 @@ SELECT 이름, 과목, SUM(시간) AS "총합 시간" FROM ssstudy
 WHERE 과목 = '수학'
 GROUP BY 이름, 과목);
 
---  가장 공부 많이 한 학생 찾기
+--  수학 공부 가장 많이 한 학생 찾기
 SELECT 이름, 과목, SUM(시간) AS "총합 시간" FROM ssstudy
 WHERE 과목 = '수학'
 GROUP BY 이름, 과목
