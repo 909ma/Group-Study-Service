@@ -12,7 +12,7 @@
 
 # 프로젝트 개요  
 Oracle SQL 숙달을 위한 프로젝트입니다.  이를 위해 목표 요구사항 네 가지를 설정했습니다. 그리고 이러한 요구사항에 입각하여 토의한 결과, 공부 모임 서비스를 구현하게 되었습니다. 
-프로젝트를 진행함에 따라 기대되는 긍정적인 효과는 추후 추가 예정입니다.
+프로젝트를 진행함에 따라 기대되는 긍정적인 효과는 여섯 가지로 요약할 수 있습니다.
 
 ## 목표 요구사항
 1. 데이터베이스 설계를 할 수 있어야 한다.  
@@ -29,19 +29,32 @@ Oracle SQL 숙달을 위한 프로젝트입니다.  이를 위해 목표 요구�
 6. 협업 능력 강화 : 팀원들과의 협업을 통해 협업 능력이 향상됩니다. 
 
 ## 요구사항 정의서
-추후 추가 예정입니다.  
+![Alt text](https://raw.githubusercontent.com/909ma/Group-Study-Service/main/%EC%A0%9C%EC%B6%9C%ED%8C%8C%EC%9D%BC%20%EA%B4%80%EB%A6%AC/%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD%20%EC%A0%95%EC%9D%98%EC%84%9C/%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD%20%EC%A0%95%EC%9D%98%EC%84%9C.JPG)
+
+## 테이블 정의서
+![Alt text](https://raw.githubusercontent.com/909ma/Group-Study-Service/main/%EC%A0%9C%EC%B6%9C%ED%8C%8C%EC%9D%BC%20%EA%B4%80%EB%A6%AC/%ED%85%8C%EC%9D%B4%EB%B8%94%20%EC%A0%95%EC%9D%98%EC%84%9C/%ED%85%8C%EC%9D%B4%EB%B8%94%20%EC%A0%95%EC%9D%98%EC%84%9C%201.JPG)
+
+![Alt text](https://raw.githubusercontent.com/909ma/Group-Study-Service/main/%EC%A0%9C%EC%B6%9C%ED%8C%8C%EC%9D%BC%20%EA%B4%80%EB%A6%AC/%ED%85%8C%EC%9D%B4%EB%B8%94%20%EC%A0%95%EC%9D%98%EC%84%9C/%ED%85%8C%EC%9D%B4%EB%B8%94%20%EC%A0%95%EC%9D%98%EC%84%9C%202.JPG)
+
+## ERD 개체 관계 다이어그램
+![Alt text](https://raw.githubusercontent.com/909ma/Group-Study-Service/main/%EC%A0%9C%EC%B6%9C%ED%8C%8C%EC%9D%BC%20%EA%B4%80%EB%A6%AC/ERD%20%EA%B0%9C%EC%B2%B4%20%EA%B4%80%EA%B3%84%20%EB%8B%A4%EC%9D%B4%EC%96%B4%EA%B7%B8%EB%9E%A8/ERD.png)
+
+## TABLE Model
+![Alt text](https://raw.githubusercontent.com/909ma/Group-Study-Service/main/%EC%A0%9C%EC%B6%9C%ED%8C%8C%EC%9D%BC%20%EA%B4%80%EB%A6%AC/TABLE%20Model/TABLE%20users%20Model.JPG)
 
 ## CRUD 매트릭스
-추후 추가 예정입니다.
+![Alt text](https://raw.githubusercontent.com/909ma/Group-Study-Service/main/%EC%A0%9C%EC%B6%9C%ED%8C%8C%EC%9D%BC%20%EA%B4%80%EB%A6%AC/CRUD%20%EB%A7%A4%ED%8A%B8%EB%A6%AD%EC%8A%A4/CRUD%20%EB%A7%A4%ED%8A%B8%EB%A6%AD%EC%8A%A4.JPG)
 
 ## 트랜잭션 분석서
-추후 추가 예정입니다.  
+![Alt text](https://raw.githubusercontent.com/909ma/Group-Study-Service/main/%EC%A0%9C%EC%B6%9C%ED%8C%8C%EC%9D%BC%20%EA%B4%80%EB%A6%AC/%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98%20%EB%B6%84%EC%84%9D%EC%84%9C/%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98%20%EB%B6%84%EC%84%9D%EC%84%9C%201.JPG) 
+
+![Alt text](https://raw.githubusercontent.com/909ma/Group-Study-Service/main/%EC%A0%9C%EC%B6%9C%ED%8C%8C%EC%9D%BC%20%EA%B4%80%EB%A6%AC/%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98%20%EB%B6%84%EC%84%9D%EC%84%9C/%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98%20%EB%B6%84%EC%84%9D%EC%84%9C%202.JPG)
 
 ## Gantt Chart
-추후 추가 예정입니다.
+![Alt text](https://raw.githubusercontent.com/909ma/Group-Study-Service/main/%EC%A0%9C%EC%B6%9C%ED%8C%8C%EC%9D%BC%20%EA%B4%80%EB%A6%AC/Gantt%20Chart/Gantt%20Chart.JPG)
 
 ## 프로젝트 일정 관리
-추후 추가 예정입니다.
+![Alt text](https://raw.githubusercontent.com/909ma/Group-Study-Service/main/%EC%A0%9C%EC%B6%9C%ED%8C%8C%EC%9D%BC%20%EA%B4%80%EB%A6%AC/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EC%9D%BC%EC%A0%95%20%EA%B4%80%EB%A6%AC/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EC%9D%BC%EC%A0%95%20%EA%B4%80%EB%A6%AC.JPG)
 
 ## 프로젝트 개선점
 프로젝트를 끝낸 뒤 추가할 예정입니다.
