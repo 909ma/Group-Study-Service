@@ -62,5 +62,18 @@ Oracle SQL 숙달을 위한 프로젝트입니다.  이를 위해 목표 요구�
 ## 프로젝트 일정 관리
 ![Alt text](https://raw.githubusercontent.com/909ma/Group-Study-Service/main/%EC%A0%9C%EC%B6%9C%ED%8C%8C%EC%9D%BC%20%EA%B4%80%EB%A6%AC/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EC%9D%BC%EC%A0%95%20%EA%B4%80%EB%A6%AC/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EC%9D%BC%EC%A0%95%20%EA%B4%80%EB%A6%AC.JPG)
 
+## 프로젝트 결과
+* 다중 JOIN 전  
+![Alt text](https://raw.githubusercontent.com/909ma/Group-Study-Service/main/%EC%A0%9C%EC%B6%9C%ED%8C%8C%EC%9D%BC%20%EA%B4%80%EB%A6%AC/%EA%B2%B0%EA%B3%BC%20%ED%99%94%EB%A9%B4/%EB%8B%A4%EC%A4%91%20JOIN(%EC%8B%A0)/%EB%8B%A4%EC%A4%91%20JOIN%201.JPG)  
+* 다중 JOIN 후  
+![Alt text](https://raw.githubusercontent.com/909ma/Group-Study-Service/main/%EC%A0%9C%EC%B6%9C%ED%8C%8C%EC%9D%BC%20%EA%B4%80%EB%A6%AC/%EA%B2%B0%EA%B3%BC%20%ED%99%94%EB%A9%B4/%EB%8B%A4%EC%A4%91%20JOIN(%EC%8B%A0)/%EB%8B%A4%EC%A4%91%20JOIN%202.JPG)  
+* 공부 최대 시간, 최소 시간 찾기  
+![Alt text](https://raw.githubusercontent.com/909ma/Group-Study-Service/main/%EC%A0%9C%EC%B6%9C%ED%8C%8C%EC%9D%BC%20%EA%B4%80%EB%A6%AC/%EA%B2%B0%EA%B3%BC%20%ED%99%94%EB%A9%B4/%EA%B3%B5%EB%B6%80%20%EC%B5%9C%EB%8C%80%20%EC%8B%9C%EA%B0%84%2C%20%EC%B5%9C%EC%86%8C%20%EC%8B%9C%EA%B0%84%20%EC%B0%BE%EA%B8%B0.JPG)  
+* 수학 공부 가장 많이 한 학생 찾기  
+![Alt text](https://raw.githubusercontent.com/909ma/Group-Study-Service/main/%EC%A0%9C%EC%B6%9C%ED%8C%8C%EC%9D%BC%20%EA%B4%80%EB%A6%AC/%EA%B2%B0%EA%B3%BC%20%ED%99%94%EB%A9%B4/%EC%88%98%ED%95%99%20%EA%B3%B5%EB%B6%80%20%EA%B0%80%EC%9E%A5%20%EB%A7%8E%EC%9D%B4%20%ED%95%9C%20%ED%95%99%EC%83%9D%20%EC%B0%BE%EA%B8%B0.JPG)  
+
 ## 프로젝트 개선점
-프로젝트를 끝낸 뒤 추가할 예정입니다.
+* TABLE Users의 의존도가 높다.
+* 한 테이블에 많은 칼럼을 만들어서 프로그램의 성능이 떨어질 수 있다.
+* COMMIT가 적어 HUMAN ERROR에 대처하기가 어렵다.
+* 프로젝트 시작 전 변수 이름을 어떻게 할지 미리 통일을 하지 않아 일관성이 떨어진다.
